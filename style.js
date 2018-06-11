@@ -40,8 +40,10 @@ $(function(){
         $('#playlist li').removeClass('active');
        element.addClass('active');
     };
-     
-    $('.volume-icone').on('click')
+     $('.volume-icone').on('click', function(){
+         $('#volum').css('display','block');
+     });
+   
 //-------playlist------    
     
     
