@@ -93,6 +93,10 @@ input#volume{
     background: #ccc;
     -webkit-appearance:none !important;
     height: 2px;
+    position: absolute;
+    top: -60px;
+    left: -32px;
+
 }
 input#volume::-webkit-slider-thumb{
    -webkit-appearance:none !important; 
@@ -133,6 +137,22 @@ input#volume::-webkit-slider-thumb{
 #volume{
     transform: rotate(90deg);
     display: none;
+    transition: 3s ease-in-out;
+}
+/*
+#volum:hover +#volume{
+     display:block;
+    transition: all 3s ease-in-out;
+}
+*/
+.sound-system{
+  width:-webkit-max-content; 
+     width:-moz-max-content;
+    width: max-content;
+     height:-webkit-max-content; 
+     height:-moz-max-content;
+    height: max-content;
+    position: relative;
 }
 /*----end----playlist-----*/
 /*----end-----bottom--nav*/

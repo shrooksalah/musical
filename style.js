@@ -40,8 +40,13 @@ $(function(){
         $('#playlist li').removeClass('active');
        element.addClass('active');
     };
-     $('.volume-icone').on('click', function(){
-         $('#volum').css('display','block');
+//    -----sound--system
+    var soundV = 1;
+     $('#volum').click( function(){
+      
+
+         $('#volume').toggle(3000);
+         
      });
    
 //-------playlist------    
