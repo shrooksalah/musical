@@ -41,13 +41,22 @@ $(function(){
        element.addClass('active');
     };
 //    -----sound--system
-    var soundV = 1;
-     $('#volum').click( function(){
-      
+   
+  
+    
+//    $("#volume").hide ();
+//$("#volum").click (function (){
+//$("#volume").toggle ();
+//});
+//$("#volum").focusout (function (){
+//$("#volume").hide ();
+//});
+//$("#volume").click (function (){
+//$("#volume").show ();
+//});
+   
 
-         $('#volume').toggle(3000);
-         
-     });
+
    
 //-------playlist------    
     
