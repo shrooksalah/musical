@@ -15,7 +15,9 @@ $(function(){
     
     
 // ----------playlist------
-    
+    $('#playlist li').on('click',function(){ 
+    $(this).addClass('play');
+    });
     var audio;
     
     initAuto($('#playlist li:first-child'));
@@ -30,9 +32,7 @@ $(function(){
 //        creat audio obgect
          
  audio = new Audio('songs/'+song);
-        if(!audio.currentTime){
-            $('#duration').html('0.00');
-        }
+
         
         $('.song-name').text(title);
 //        insert cover
@@ -42,15 +42,7 @@ $(function(){
     };
 //    -----sound--system
    
-//  --start----progress----
-   
-        $('.progress').animate({
-	
-	
-	width:'100%',
-	
-},10000);
-//    ------end----progress
+
 //----------play----pause
 $('#play').click(function(){
     
@@ -60,44 +52,48 @@ $('#play').click(function(){
   $('#pause').click(function(){
     
     audio.pause();
-});  
+}); 
     
-//      $(audio).on("canplay", function () {
-//        alert(this.duration);
-//           var mmmm= audio.duration;
-//    console.log(mmmm);
-//          
-//          
-//          
-//     var sss= audio.currentTime;
-//    console.log(sss);
-//    }); 
-  
+   
     
     
     
     
+ $(audio).bind("timeupdate",function(){
+     
+     $('#duration').html(formatTime(this.currentTime))
+     
+         var valPro= 0;
+    if(audio.currentTime>0){
+valPro= Math.floor((100/audio.duration)*audio.currentTime);
+        $(".progress").css('width',valPro +'%');
+    }
+     
+     console.log(valPro);
+ });
+     
+function formatTime(seconds){
+    var seconds= Math.round(seconds);
+    var minutes = Math.floor(seconds/60);
+    seconds= Math.floor(seconds % 60);
+     if (seconds<10){
+         seconds='0'+seconds;
+     }
     
-    function showDuration(){
-    $(audio).on("canplay", function () {
-    var s =parseInt(audio.currentTime % 60);
-   var m =parseInt((audio.currentTime/60 )% 60);
-       console.log(s);
-        console.log(m);
+    
+
+  return minutes+":"+seconds;  
+    
+};
+
+     
+    
+
+    
         
-        if(s<10){
-            s='0'+s;
-        }
-        $('#duration').html(m+'.'+s);
-        var value=0;
-        if(audio.currentTime>0){
-            value= Math.floor((100/ audio.duration)*audio.currentTime);
-        }
-        $(".progress").css('width',value+'s');
-        });
         
     
-    };
+
 //----------play ------pause
    
 //-------playlist------    

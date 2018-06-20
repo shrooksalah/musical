@@ -205,6 +205,12 @@ transition: .3s ease-in-out;
     height: 200px;
     position: absolute;
 }
+#type-w{
+     width: 100%;
+    margin: 23% auto;
+    height: 200px;
+    position: absolute;
+}
 .type-writer-title{
    text-align: center;
     color: #840780;
