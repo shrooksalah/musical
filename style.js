@@ -29,9 +29,9 @@ $(function(){
         
 //        creat audio obgect
          
- audio = new Audio('songs'+song);
+ audio = new Audio('songs/'+song);
         if(!audio.currentTime){
-            $('#song-time').html('0.00');
+            $('#duration').html('0.00');
         }
         
         $('.song-name').text(title);
@@ -42,21 +42,63 @@ $(function(){
     };
 //    -----sound--system
    
+//  --start----progress----
+   
+        $('.progress').animate({
+	
+	
+	width:'100%',
+	
+},10000);
+//    ------end----progress
+//----------play----pause
+$('#play').click(function(){
+    
+    audio.play();
+});
+    
+  $('#pause').click(function(){
+    
+    audio.pause();
+});  
+    
+//      $(audio).on("canplay", function () {
+//        alert(this.duration);
+//           var mmmm= audio.duration;
+//    console.log(mmmm);
+//          
+//          
+//          
+//     var sss= audio.currentTime;
+//    console.log(sss);
+//    }); 
   
     
-//    $("#volume").hide ();
-//$("#volum").click (function (){
-//$("#volume").toggle ();
-//});
-//$("#volum").focusout (function (){
-//$("#volume").hide ();
-//});
-//$("#volume").click (function (){
-//$("#volume").show ();
-//});
-   
-
-
+    
+    
+    
+    
+    function showDuration(){
+    $(audio).on("canplay", function () {
+    var s =parseInt(audio.currentTime % 60);
+   var m =parseInt((audio.currentTime/60 )% 60);
+       console.log(s);
+        console.log(m);
+        
+        if(s<10){
+            s='0'+s;
+        }
+        $('#duration').html(m+'.'+s);
+        var value=0;
+        if(audio.currentTime>0){
+            value= Math.floor((100/ audio.duration)*audio.currentTime);
+        }
+        $(".progress").css('width',value+'s');
+        });
+        
+    
+    };
+//----------play ------pause
    
 //-------playlist------    
     
